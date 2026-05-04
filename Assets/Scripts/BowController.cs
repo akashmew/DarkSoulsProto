@@ -13,6 +13,7 @@ public class BowController : MonoBehaviour
     [SerializeField] private float drawTime = 0.5f;       // time to fully draw bow
     [SerializeField] private float maxArrowForce = 30f;
     [SerializeField] private float minArrowForce = 10f;
+    [SerializeField] private float arrowCooldown = 1f;  // seconds before next arrow can be drawn
 
     private static readonly int IsAimingHash   = Animator.StringToHash("IsAiming");
     private static readonly int IsShootingHash = Animator.StringToHash("shoot");
@@ -20,11 +21,13 @@ public class BowController : MonoBehaviour
     private Animator _animator;
     private PlayerAiming _playerAiming;
 
+    public bool IsReady => canDrawAgain;
+
     private bool _isAiming;
     private bool _isDrawing;
     private bool arrowPlaced;
     private float _drawProgress;
-    private float elapsedTime;// 0 to 1
+    private float _lastShotTime = -999f;
     private bool canDrawAgain = true;
 
     [SerializeField] Transform debugTransform;
@@ -70,15 +73,9 @@ public class BowController : MonoBehaviour
             _isDrawing    = false;
         }
 
-        if(arrowPlaced && !canDrawAgain)
+        if (!canDrawAgain && Time.time - _lastShotTime >= arrowCooldown)
         {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > 3f)
-            {
-                canDrawAgain = true;
-                Debug.Log("Was this called"+ elapsedTime);
-            }
-
+            canDrawAgain = true;
         }
 
     }
@@ -131,7 +128,7 @@ public class BowController : MonoBehaviour
     private void Shoot()
     {
         _animator.SetTrigger(IsShootingHash);
-        elapsedTime = Time.time;
+        _lastShotTime = Time.time;
         // Actual arrow spawn is called from Animation Event: OnArrowRelease()
     }
 

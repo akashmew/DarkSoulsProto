@@ -28,6 +28,7 @@ public class PlayerAiming : MonoBehaviour
 
     private Animator _animator;
     private PlayerMovement _movement;
+    private BowController _bowController;
 
     private bool _isAiming;
     private bool _wasAiming;
@@ -42,13 +43,15 @@ public class PlayerAiming : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<PlayerMovement>();
+        _bowController = GetComponent<BowController>();
         _yaw = transform.eulerAngles.y;
         crosshair.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        _isAiming = Input.GetMouseButton(1);
+        bool bowReady = _bowController == null || _bowController.IsReady;
+        _isAiming = Input.GetMouseButton(1) && bowReady;
         
 
         // if (Input.GetMouseButtonDown(0))
