@@ -959,6 +959,7 @@ MonoBehaviour:
   drawTime: 0.5
   maxArrowForce: 10
   minArrowForce: 5
+  arrowCooldown: 1.5
   debugTransform: {fileID: 1632050806}
 --- !u!114 &592980744
 MonoBehaviour:
@@ -1332,7 +1333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650654246}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.074531786, y: -3.2810899e-22, z: 4.5051584e-23, w: 0.99721867}
+  m_LocalRotation: {x: 0.0745318, y: 0, z: 0, w: 0.99721867}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1984,7 +1985,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234650100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09261052, y: 2.8944251e-16, z: -1.5813515e-16, w: 0.99570245}
+  m_LocalRotation: {x: 0.09261053, y: 0, z: 0, w: 0.99570245}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2536,7 +2537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398276458}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11070652, y: 0.00000002853506, z: -0.0000000031785554, w: 0.99385315}
+  m_LocalRotation: {x: 0.11070652, y: 0, z: 0, w: 0.99385315}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3965,7 +3966,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149103818601}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

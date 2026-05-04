@@ -128,7 +128,6 @@ public class BowController : MonoBehaviour
     private void Shoot()
     {
         _animator.SetTrigger(IsShootingHash);
-        _lastShotTime = Time.time;
         // Actual arrow spawn is called from Animation Event: OnArrowRelease()
     }
 
@@ -139,18 +138,15 @@ public class BowController : MonoBehaviour
         Vector3 direction = (aimPoint - arrowSpawnPoint.position).normalized;
         Debug.DrawRay(arrowSpawnPoint.position, direction*30f, Color.green,4f);
 
-        
-
-
         float force = Mathf.Lerp(minArrowForce, maxArrowForce, _drawProgress);
         currentArrow.transform.SetParent(null);
         currentArrow.GetComponent<Arrow>().Launch(direction*force);
-       
-        
+
         _animator.ResetTrigger(IsShootingHash);
         currentArrow = null;
         arrowPlaced = false;
-       
+        canDrawAgain = false;
+        _lastShotTime = Time.time;
     }
 
     private Vector3 GetArrowAimPoint()
