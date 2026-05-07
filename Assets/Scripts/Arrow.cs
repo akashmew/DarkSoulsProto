@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [SerializeField] private float speed = 30f;
+    [SerializeField] private float speed  = 30f;
+    [SerializeField] private float damage = 25f;
     [SerializeField] private float lifetime = 5f;
     [SerializeField] private LayerMask hitMask = new LayerMask();
 
@@ -68,6 +69,10 @@ public class Arrow : MonoBehaviour
 
         if (_trail != null)
             _trail.enabled = false;
+
+        // deal damage if we hit an enemy
+        EnemyHealth enemy = other.collider.GetComponentInParent<EnemyHealth>();
+        enemy?.TakeDamage(damage);
 
         if (other.contacts.Length > 0)
             SpawnImpactEffect(other.contacts[0]);
