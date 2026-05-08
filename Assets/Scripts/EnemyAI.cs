@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -109,12 +110,23 @@ public class EnemyAI : MonoBehaviour
 
         // move toward player
         _agent.SetDestination(_player.position);
+        //_agent.speed = (animator.deltaPosition/Time.deltaTime).magnitude;
         _agent.isStopped = false;
         SetAnimSpeed(1f);
 
         // smooth rotation to face player while chasing
         FacePlayer();
     }
+
+    private void OnAnimatorMove()
+    {
+        if (animator.GetFloat("Speed") == 1)
+        {
+            _agent.speed = (animator.deltaPosition/ Time.deltaTime).magnitude;
+            
+        }
+    }
+
 
     private void UpdateAttack()
     {
