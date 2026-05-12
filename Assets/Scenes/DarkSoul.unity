@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bfe44e84cab13ef48b0748ef1f9237fc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bfe44e84cab13ef48b0748ef1f9237fc,
         type: 3}
@@ -249,16 +249,12 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: bfe44e84cab13ef48b0748ef1f9237fc,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfe44e84cab13ef48b0748ef1f9237fc,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1930880000}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bfe44e84cab13ef48b0748ef1f9237fc,
         type: 3}
       insertIndex: -1
@@ -728,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09261053, y: 0.000000030587515, z: -0.0000000028449518, w: 0.99570245}
+  m_LocalRotation: {x: 0.09261055, y: -0.000000044060723, z: 0.0000000040980996, w: 0.99570245}
   m_LocalPosition: {x: 4.4, y: 2.2730002, z: -43.399998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3467,33 +3463,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 78479712}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &1930880000
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930879993}
-  serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &1930880001
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3514,9 +3483,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.37
+  m_Height: 2.252147
   m_Direction: 1
-  m_Center: {x: 0, y: 1.18, z: 0}
+  m_Center: {x: 0, y: 1.1502582, z: -0}
 --- !u!114 &1930880002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3534,8 +3503,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 8.9
-  attackCooldown: 2.2
+  attackRange: 8
+  attackCooldown: 3
   attackDamage: 20
   chaseSpeed: 3.5
   rotationSpeed: 6
@@ -3578,7 +3547,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.025
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &1982893117

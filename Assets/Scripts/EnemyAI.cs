@@ -118,14 +118,37 @@ public class EnemyAI : MonoBehaviour
         FacePlayer();
     }
 
-    private void OnAnimatorMove()
-    {
-        if (animator.GetFloat("Speed") == 1)
+        // private void OnAnimatorMove()
+        // {
+        //     if (animator.GetFloat("Speed") == 1)
+        //     {
+        //         _agent.speed = (animator.deltaPosition/ Time.deltaTime).magnitude;
+        //         
+        //     }
+        // }
+        
+        private void OnAnimatorMove()
         {
-            _agent.speed = (animator.deltaPosition/ Time.deltaTime).magnitude;
-            
+          
+            if (_state == State.Attack)
+            {
+                transform.position = animator.rootPosition;
+
+                _agent.nextPosition = transform.position;
+            }
+
+           
         }
-    }
+        
+        public void OnAttackFinished()
+        {
+            _agent.updatePosition = true;
+            _agent.updateRotation = true;
+
+            _agent.Warp(transform.position);
+
+            EnterChase();
+        }
 
 
     private void UpdateAttack()
@@ -163,12 +186,16 @@ public class EnemyAI : MonoBehaviour
     {
         _state = State.Chase;
         _agent.isStopped = false;
+        _agent.updatePosition = true;
+        _agent.updateRotation = true;
     }
 
     private void EnterAttack()
     {
         _state = State.Attack;
         _agent.isStopped = true;
+        _agent.updatePosition = false;
+        _agent.updateRotation = false;
     }
 
     // called by EnemyHealth when a hit is received
