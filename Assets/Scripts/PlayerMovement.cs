@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int BowSpeedHash = Animator.StringToHash("BowSpeed");
     private static readonly int IsRollingHash = Animator.StringToHash("isRolling");
     private static readonly int DrawArrow = Animator.StringToHash("isAiming");
+    private static readonly int IsDamage = Animator.StringToHash("IsDamage");
 
     // -- Component references --
     private CharacterController _controller;
@@ -181,6 +182,10 @@ public class PlayerMovement : MonoBehaviour
         //_animator.SetFloat(BowSpeedHash, _bowAnimationSpeed);
     }
 
+    public void TakeDamage()
+    {
+        _animator.SetTrigger(IsDamage);
+    }
     #endregion
     // -------------------------------------------------------
     #region Editor Helpers

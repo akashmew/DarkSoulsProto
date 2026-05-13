@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -37,6 +38,12 @@ public class EnemyAI : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private DamageOverlay damageOverlay;
+
+    
+   
+    private CinemachineImpulseSource impulseSource;
 
     // ── Animator hashes ──────────────────────────────────────────────
     private static readonly int SpeedHash  = Animator.StringToHash("Speed");
@@ -64,10 +71,13 @@ public class EnemyAI : MonoBehaviour
         // auto-find animator on self or children if not assigned
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+        if(impulseSource == null)
+            impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     private void Update()
     {
+        
         if (_state == State.Dead) return;
 
         _attackTimer -= Time.deltaTime;
@@ -144,7 +154,7 @@ public class EnemyAI : MonoBehaviour
         {
             _agent.updatePosition = true;
             _agent.updateRotation = true;
-
+           
             _agent.Warp(transform.position);
 
             EnterChase();
@@ -166,8 +176,11 @@ public class EnemyAI : MonoBehaviour
 
         if (_attackTimer <= 0f)
         {
+            Debug.Log("_attackTimer"+_attackTimer);
             _attackTimer = attackCooldown;
             animator?.SetTrigger(AttackHash);
+           
+            Debug.Log("_attackTimer"+_attackTimer);
         }
     }
 
@@ -220,6 +233,13 @@ public class EnemyAI : MonoBehaviour
         // disable collider so the corpse doesn't block arrows
         foreach (var col in GetComponents<Collider>())
             col.enabled = false;
+    }
+    
+    public void DealDamage()
+    {
+        impulseSource.GenerateImpulse();
+        playerMovement.TakeDamage();
+        damageOverlay.ShowDamage();
     }
 
     #endregion
