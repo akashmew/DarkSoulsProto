@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private DamageOverlay damageOverlay;
+    [SerializeField] private PlayerHealth playerHealth;
 
     
    
@@ -176,11 +177,8 @@ public class EnemyAI : MonoBehaviour
 
         if (_attackTimer <= 0f)
         {
-            Debug.Log("_attackTimer"+_attackTimer);
             _attackTimer = attackCooldown;
             animator?.SetTrigger(AttackHash);
-           
-            Debug.Log("_attackTimer"+_attackTimer);
         }
     }
 
@@ -197,6 +195,7 @@ public class EnemyAI : MonoBehaviour
 
     private void EnterChase()
     {
+        if(_attackTimer>0)return;
         _state = State.Chase;
         _agent.isStopped = false;
         _agent.updatePosition = true;
@@ -216,6 +215,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (_state == State.Dead) return;
         animator?.SetTrigger(HitHash);
+        HitStop.Instance.Stop(0.06f);
 
         // if the enemy wasn't chasing yet, aggro on hit
         if (_state == State.Idle)
@@ -237,9 +237,14 @@ public class EnemyAI : MonoBehaviour
     
     public void DealDamage()
     {
-        impulseSource.GenerateImpulse();
-        playerMovement.TakeDamage();
-        damageOverlay.ShowDamage();
+        impulseSource.GenerateImpulse(1.25f);
+        playerHealth.TakeDamage(10);
+       
+    }
+
+    public void FootStep()
+    {
+        impulseSource.GenerateImpulse(0.07f);
     }
 
     #endregion
