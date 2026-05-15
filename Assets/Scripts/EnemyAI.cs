@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 /// <summary>
 /// Dark Souls–style enemy AI.
@@ -41,6 +43,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private DamageOverlay damageOverlay;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private CinemachineFreeLook virtualCamera;
+    [SerializeField] private Transform orginalLookAt;
+    [SerializeField] private Image victoryImage;
 
     
    
@@ -215,7 +220,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (_state == State.Dead) return;
         animator?.SetTrigger(HitHash);
-        HitStop.Instance.Stop(0.06f);
+       HitStop.Instance.Stop(0.06f);
 
         // if the enemy wasn't chasing yet, aggro on hit
         if (_state == State.Idle)
@@ -225,16 +230,82 @@ public class EnemyAI : MonoBehaviour
     // called by EnemyHealth when health reaches zero
     public void OnDeath()
     {
+        
         _state = State.Dead;
         _agent.isStopped = true;
         _agent.enabled   = false;
         animator?.SetTrigger(DeathHash);
+       
+        
 
         // disable collider so the corpse doesn't block arrows
         foreach (var col in GetComponents<Collider>())
             col.enabled = false;
     }
+
+    public void FinalShot()
+    {
+        StartCoroutine(DeathZoom());
+        StartCoroutine(DeathSlowMotion());
+    }
     
+    private IEnumerator DeathSlowMotion()
+    {
+       
+        Time.timeScale = 0.2f;
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Time.timeScale = 1f;
+        
+        yield return new WaitForSecondsRealtime(1.5f);
+        
+        victoryImage.gameObject.SetActive(true); 
+    }
+    private IEnumerator DeathZoom()
+    {
+        virtualCamera.LookAt=this.transform;
+        float originalFOV =
+            virtualCamera.m_Lens.FieldOfView;
+
+        float targetFOV = 20f;
+
+        float timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.unscaledDeltaTime * 8f;
+
+            virtualCamera.m_Lens.FieldOfView =
+                Mathf.Lerp(
+                    originalFOV,
+                    targetFOV,
+                    timer
+                );
+
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        timer = 0;
+
+        while (timer < 1)
+        {
+            timer += Time.unscaledDeltaTime * 6f;
+
+            virtualCamera.m_Lens.FieldOfView =
+                Mathf.Lerp(
+                    targetFOV,
+                    originalFOV,
+                    timer
+                );
+
+            yield return null;
+        }
+
+        virtualCamera.LookAt = orginalLookAt;
+    }
     public void DealDamage()
     {
         impulseSource.GenerateImpulse(1.25f);

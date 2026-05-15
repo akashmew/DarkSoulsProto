@@ -7,6 +7,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private float damage = 25f;
     [SerializeField] private float lifetime = 5f;
     [SerializeField] private LayerMask hitMask = new LayerMask();
+    [SerializeField] private ParticleSystem flame;
 
     private Rigidbody _rb;
     private TrailRenderer _trail;
@@ -43,7 +44,9 @@ public class Arrow : MonoBehaviour
 
     private IEnumerator EnableColliderAfterDelay(float delay)
     {
+        
         yield return new WaitForSeconds(delay);
+       
         if (_collider != null)
             _collider.enabled = true;
     }
@@ -126,11 +129,11 @@ public class Arrow : MonoBehaviour
         col.enabled = true;
         var grad = new Gradient();
         grad.SetKeys(
-            new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+            new[] { new GradientColorKey(Color.red, 0f), new GradientColorKey(Color.red, 1f) },
             new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 0.65f) }
         );
         col.color = new ParticleSystem.MinMaxGradient(grad);
-
+        flame.gameObject.SetActive(false);
         // --- shrink towards end of life ---
         var sol = ps.sizeOverLifetime;
         sol.enabled = true;
@@ -171,7 +174,7 @@ public class Arrow : MonoBehaviour
         subCol.enabled = true;
         var subGrad = new Gradient();
         subGrad.SetKeys(
-            new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+            new[] { new GradientColorKey(Color.red, 0f), new GradientColorKey(Color.red, 1f) },
             new[] { new GradientAlphaKey(0.6f, 0f), new GradientAlphaKey(0f, 0.5f) }
         );
         subCol.color = new ParticleSystem.MinMaxGradient(subGrad);

@@ -135,11 +135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  damage: 25
+  damage: 15
   lifetime: 5
   hitMask:
     serializedVersion: 2
     m_Bits: 1
+  flame: {fileID: 1103590191781433192}
 --- !u!54 &7565906565790942241
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -618,6 +619,12 @@ PrefabInstance:
 --- !u!4 &753686615709623854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 728576751314082672, guid: c2f6a8962aac3814aa56cb9647c93470,
+    type: 3}
+  m_PrefabInstance: {fileID: 29780591020457310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1103590191781433192 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1097031286348149302, guid: c2f6a8962aac3814aa56cb9647c93470,
     type: 3}
   m_PrefabInstance: {fileID: 29780591020457310}
   m_PrefabAsset: {fileID: 0}

@@ -834,7 +834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09261055, y: -0.000000044060723, z: 0.0000000040980996, w: 0.99570245}
+  m_LocalRotation: {x: 0.09261055, y: -0.0000000331769, z: 0.000000003085792, w: 0.99570245}
   m_LocalPosition: {x: 4.4, y: 2.2730002, z: -43.399998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -998,13 +998,14 @@ GameObject:
   - component: {fileID: 364783081}
   - component: {fileID: 364783083}
   - component: {fileID: 364783082}
+  - component: {fileID: 364783084}
   m_Layer: 0
   m_Name: EHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &364783081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1063,6 +1064,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364783080}
   m_CullTransparentMesh: 1
+--- !u!114 &364783084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364783080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdf69ed8aedf4943847a445b790a383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 2090500002}
+  fillImageParent: {fileID: 364783080}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,7 +1738,7 @@ Transform:
   m_GameObject: {fileID: 650654246}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0745318, y: 0, z: 0, w: 0.99721867}
-  m_LocalPosition: {x: 0, y: 0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2005,7 +2020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 23.8, y: -34}
+  m_AnchoredPosition: {x: 23.800049, y: -34}
   m_SizeDelta: {x: 324.7308, y: 54.142}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &829056171
@@ -2565,7 +2580,7 @@ Transform:
   m_GameObject: {fileID: 1234650100}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09261053, y: 0, z: 0, w: 0.99570245}
-  m_LocalPosition: {x: 0, y: 0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2989,6 +3004,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1326450220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326450221}
+  - component: {fileID: 1326450223}
+  - component: {fileID: 1326450222}
+  m_Layer: 5
+  m_Name: VictoryImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1326450221
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326450220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1339010592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 129}
+  m_SizeDelta: {x: 1536, y: 1024}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1326450222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326450220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e9178c6e494223e4485f778e34c2f592, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1326450223
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326450220}
+  m_CullTransparentMesh: 1
 --- !u!1 &1339010588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,6 +3177,7 @@ RectTransform:
   - {fileID: 789625617}
   - {fileID: 1087479879}
   - {fileID: 829056170}
+  - {fileID: 1326450221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3135,7 +3226,7 @@ Transform:
   m_GameObject: {fileID: 1398276458}
   serializedVersion: 2
   m_LocalRotation: {x: 0.11070652, y: 0, z: 0, w: 0.99385315}
-  m_LocalPosition: {x: 0, y: 0.00000047683716, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4056,6 +4147,9 @@ MonoBehaviour:
   playerMovement: {fileID: 592980739}
   damageOverlay: {fileID: 1339010593}
   playerHealth: {fileID: 5866666021319382895}
+  virtualCamera: {fileID: 740801165}
+  orginalLookAt: {fileID: 1072148300}
+  victoryImage: {fileID: 1326450222}
 --- !u!114 &1930880003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4069,21 +4163,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthUI: {fileID: 364783084}
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -5289,6 +5372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthUI: {fileID: 0}
   onHit:
     m_PersistentCalls:
       m_Calls: []

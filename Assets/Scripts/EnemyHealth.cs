@@ -5,6 +5,9 @@ public class EnemyHealth : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField] private float maxHealth = 100f;
+    
+    [SerializeField]
+    private EnemyHealthUI healthUI;
 
     [Header("Events")]
     public UnityEvent onHit;
@@ -28,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
         _currentHealth -= amount;
         _currentHealth  = Mathf.Max(_currentHealth, 0f);
+        healthUI.UpdateHealth(_currentHealth,maxHealth);
 
         onHit.Invoke();
         _ai?.OnHit();
